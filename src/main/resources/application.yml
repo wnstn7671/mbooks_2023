@@ -2,10 +2,14 @@ spring:
   profiles:
     active: dev
     include:
-      - base-addi
+      - secret
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
+      - org.springframework.boot.autoconfigure.session.SessionAutoConfiguration
   sql:
     init:
-      mode: always
+      mode: never
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
   batch:
@@ -25,7 +29,7 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: jangka512@gmail.com
+    username: wnstn7671@gmail.com
     password: NEED_TO_EMPTY
     properties:
       mail:
@@ -33,11 +37,10 @@ spring:
           auth: true
           starttls:
             enable: true
-jpa:
-  defer-datasource-initialization:logging:
+logging:
   level:
     root: INFO
-    com.ll.exam.final__2022_10_08.app: DEBUG
+    com.ll.exam.mbooks.app: DEBUG
     org.hibernate.orm.jdbc.bind: TRACE
     org.hibernate.orm.jdbc.extract: TRACE
 custom:
